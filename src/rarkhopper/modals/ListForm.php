@@ -10,7 +10,7 @@ use function is_int;
 
 class ListForm extends ClosureForm{
 	/**
-	 * @param Closure $handler signature is `function(Player $player, int $response)`
+	 * @param Closure $handler signature is function(Player $player, int $response)
 	 * @return $this
 	 */
 	public function setHandler(Closure $handler) : self {

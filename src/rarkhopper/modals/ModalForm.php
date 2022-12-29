@@ -10,7 +10,7 @@ use function is_bool;
 
 class ModalForm extends ClosureForm{
 	/**
-	 * @param Closure $handler signature is `function(Player $player, bool $response)`
+	 * @param Closure $handler signature is function(Player $player, bool $response)
 	 * @return $this
 	 */
 	public function setHandler(Closure $handler) : self {
@@ -21,7 +21,7 @@ class ModalForm extends ClosureForm{
 	 * @inheritdoc
 	 */
 	protected function onSubmit(Player $player, int|bool|array $response) : void{
-		if(!$this->validateResponse($response) or $this->handler === null) return;
+		if(!$this->validateResponse($response) || $this->handler === null) return;
 		($this->handler)($player, (bool) $response);
 	}
 
