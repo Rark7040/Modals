@@ -16,7 +16,7 @@ use function is_int;
  * @internal
  */
 abstract class ClosureForm implements Form{
-	private ?Closure $handler = null;
+	public ?Closure $handler = null;
 	private ?Closure $nullHandler = null;
 	/** @var array<string, string|array<string>> */
 	private array $formArr;
@@ -34,7 +34,7 @@ abstract class ClosureForm implements Form{
 	}
 
 	/**
-	 * @param Closure $handler signature is `function(Player $player, mixed $response)`
+	 * @param Closure $handler signature is function(Player $player, mixed $response)
 	 * @return $this
 	 */
 	public function setHandler(Closure $handler) : self {
@@ -43,16 +43,12 @@ abstract class ClosureForm implements Form{
 	}
 
 	/**
-	 * @param Closure $handler signature is `function(Player $player)`
+	 * @param Closure $handler signature is function(Player $player)
 	 * @return $this
 	 */
 	public function setNullHandler(Closure $handler) : self {
 		$this->nullHandler = $handler;
 		return $this;
-	}
-
-	protected function getHandler() : ?Closure{
-		return $this->handler;
 	}
 
 	/**

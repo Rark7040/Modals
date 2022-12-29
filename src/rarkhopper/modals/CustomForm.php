@@ -10,7 +10,7 @@ use function is_array;
 
 class CustomForm extends ClosureForm{
 	/**
-	 * @param Closure $handler signature is `function(Player $player, array<int, int|string> $response)`
+	 * @param Closure $handler signature is function(Player $player, array<int, int|string> $response)
 	 * @return $this
 	 */
 	public function setHandler(Closure $handler) : self {
@@ -21,11 +21,8 @@ class CustomForm extends ClosureForm{
 	 * @inheritdoc
 	 */
 	protected function onSubmit(Player $player, int|bool|array $response) : void{
-		if(!$this->validateResponse($response)) return;
-		$handler = $this->getHandler();
-
-		if($handler === null) return;
-		$handler($player, (array) $response);
+		if(!$this->validateResponse($response) || $this->handler === null) return;
+		($this->handler)($player, (array) $response);
 	}
 
 	private function validateResponse(mixed $response) : bool{

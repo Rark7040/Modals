@@ -21,11 +21,8 @@ class ListForm extends ClosureForm{
 	 * @inheritdoc
 	 */
 	protected function onSubmit(Player $player, int|bool|array $response) : void{
-		if(!$this->validateResponse($response)) return;
-		$handler = $this->getHandler();
-
-		if($handler === null) return;
-		$handler($player, (int) $response);
+		if(!$this->validateResponse($response) || $this->handler === null) return;
+		($this->handler)($player, (int) $response);
 	}
 
 	private function validateResponse(mixed $response) : bool{
