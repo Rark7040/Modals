@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long;
 
-use rarkhopper\modals\ElementBase;
+use rarkhopper\modals\long\element\LongFormButton;
 
 class LongFormResponse{
-	private ElementBase $element;
+	private LongFormButton $element;
 	private int $raw;
 
-	public function __construct(ElementBase $element, int $raw){
+	public function __construct(LongFormButton $element, int $raw){
 		$this->element = $element;
 		$this->raw = $raw;
 	}
 
-	public function getPressedElement() : ElementBase{
+	public function getPressedElement() : LongFormButton{
 		return $this->element;
 	}
 
