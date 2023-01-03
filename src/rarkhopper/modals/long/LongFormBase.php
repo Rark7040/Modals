@@ -21,21 +21,15 @@ abstract class LongFormBase extends FormBase{
 		return $this->elements;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void{
+		if(!is_int($rawResponse)) return;
 		$response = $this->createResponse($rawResponse);
 
 		if($response === null) return;
 		$this->onSubmit($player, $response);
 	}
 
-	/**
-	 * @param int|bool|array<int, int|string> $rawResponse
-	 */
-	private function createResponse(int|bool|array $rawResponse) : ?LongFormResponse{
-		if(!is_int($rawResponse)) return null;
+	private function createResponse(int $rawResponse) : ?LongFormResponse{
 		$pressedElement = $this->getElements()->getButtons()->getAll()[$rawResponse] ?? null;
 
 		if($pressedElement === null) return null;

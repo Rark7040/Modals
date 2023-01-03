@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals;
 
-use InvalidArgumentException;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
+use ReflectionClass;
+use function count;
 use function is_array;
 use function is_bool;
 use function is_int;
@@ -16,7 +17,7 @@ use function is_int;
  */
 abstract class FormBase implements Form{
 	/**
-	 * @param int|bool|array<int, int|string> $rawResponse
+	 * @param int|bool|array<int, int|string|bool> $rawResponse
 	 */
 	abstract protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void;
 	abstract protected function getElements() : FormElements;
@@ -25,9 +26,18 @@ abstract class FormBase implements Form{
 		//NOOP
 	}
 
+	public function send(Player $player) : void{
+		$refClass = new ReflectionClass($player);
+		$refProp = $refClass->getProperty('forms');
+		$refProp->setAccessible(true);
+		$receivedForms = $refProp->getValue($player);
+
+		if(!is_array($receivedForms) || count($receivedForms) > 0) return;
+		$player->sendForm($this);
+	}
+
 	/**
 	 * @param mixed $data
-	 * @throws InvalidArgumentException
 	 */
 	public function handleResponse(Player $player, $data) : void{
 		if($data === null){

@@ -23,21 +23,13 @@ abstract class ModalFormBase extends FormBase{
 		return $this->elements;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void{
+		if(!is_bool($rawResponse)) return;
 		$response = $this->createResponse($rawResponse);
-
-		if($response === null) return;
 		$this->onSubmit($player, $response);
 	}
 
-	/**
-	 * @param int|bool|array<int, int|string> $rawResponse
-	 */
-	private function createResponse(int|bool|array $rawResponse) : ?ModalFormResponse{
-		if(!is_bool($rawResponse)) return null;
+	private function createResponse(bool $rawResponse) : ModalFormResponse{
 		$element = $this->getElements();
 		$pressedElement = $rawResponse ? $element->getTrueButton() : $element->getFalseButton();
 		return new ModalFormResponse($pressedElement, $rawResponse);
