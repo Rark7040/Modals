@@ -19,6 +19,7 @@ class Slider extends NamedElement implements ICustomFormOption{
 	public function __construct(string $name, string $txt, int $default, int $min, int $max){
 		parent::__construct($name);
 
+		if($min > $max) throw new InvalidArgumentException('min must be greater than max');
 		if($min > $default || $default > $max) throw new InvalidArgumentException('default must be between min and max');
 		$this->txt = $txt;
 		$this->default = $default;
