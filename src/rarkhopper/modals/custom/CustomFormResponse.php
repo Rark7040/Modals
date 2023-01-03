@@ -4,28 +4,26 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\custom;
 
-use rarkhopper\modals\custom\element\ICustomFormOption;
-
 class CustomFormResponse{
-	/** @var array<ICustomFormOption> */
-	private array $elements;
+	/** @var array<string, string|int|bool> */
+	private array $response;
 	/** @var array<int, string|int|bool>  */
 	private array $raw;
 
 	/**
-	 * @param array<ICustomFormOption> $elements
-	 * @param array<string|int|bool>   $raw
+	 * @param array<string, string|int|bool> $response
+	 * @param array<string|int|bool>         $raw
 	 */
-	public function __construct(array $elements, array $raw){
-		$this->elements = $elements;
+	public function __construct(array $response, array $raw){
+		$this->response = $response;
 		$this->raw = $raw;
 	}
 
 	/**
-	 * @return ICustomFormOption[]
+	 * @return array<string, mixed>
 	 */
-	public function getAllElements() : array{
-		return $this->elements;
+	public function getResponse() : array{
+		return $this->response;
 	}
 
 	/**
