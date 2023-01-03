@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace rarkhopper\modals\modal;
 
 use pocketmine\player\Player;
-use rarkhopper\modals\ClosureForm;
+use rarkhopper\modals\FormBase;
 use rarkhopper\modals\long\ModalFormElements;
 use rarkhopper\modals\modal\element\ModalFormResponse;
 use function is_bool;
 
-abstract class ModalForm extends ClosureForm{
+abstract class ModalFormBase extends FormBase{
 	private ModalFormElements $elements;
 
 	abstract protected function onSubmit(Player $player, ModalFormResponse $response) : void;

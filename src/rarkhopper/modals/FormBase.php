@@ -14,7 +14,7 @@ use function is_int;
 /**
  * @internal
  */
-abstract class ClosureForm implements Form{
+abstract class FormBase implements Form{
 	/**
 	 * @param int|bool|array<int, int|string> $rawResponse
 	 */

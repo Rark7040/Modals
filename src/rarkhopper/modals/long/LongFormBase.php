@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace rarkhopper\modals\long;
 
 use pocketmine\player\Player;
-use rarkhopper\modals\ClosureForm;
+use rarkhopper\modals\FormBase;
 use function is_int;
 
-abstract class LongForm extends ClosureForm{
+abstract class LongFormBase extends FormBase{
 	private LongFormElements $elements;
 
 	abstract protected function onSubmit(Player $player, LongFormResponse $response) : void;
