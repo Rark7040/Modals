@@ -7,6 +7,9 @@ namespace rarkhopper\modals\utils;
 use rarkhopper\modals\IPrimaryElement;
 use rarkhopper\modals\NamedElement;
 
+/**
+ * @internal
+ */
 class FormTitle extends NamedElement implements IPrimaryElement{
 	private string $title;
 

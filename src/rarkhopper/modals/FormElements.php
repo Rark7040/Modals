@@ -7,6 +7,9 @@ namespace rarkhopper\modals;
 use JsonSerializable;
 use rarkhopper\modals\utils\FormTitle;
 
+/**
+ * @internal
+ */
 abstract class FormElements implements JsonSerializable{
 	protected string $title;
 	/** @var array<IPrimaryElement> */

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals;
 
+/**
+ * @internal
+ */
 class NamedElement extends ElementBase{
 	private string $name;
 

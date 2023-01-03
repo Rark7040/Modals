@@ -7,9 +7,6 @@ namespace rarkhopper\modals\long\element;
 use rarkhopper\modals\IPrimaryElement;
 use rarkhopper\modals\NamedElement;
 
-/**
- * @internal
- */
 class ButtonList extends NamedElement implements IPrimaryElement{
 	/** @var array<LongFormButton> */
 	private array $buttons = [];
@@ -25,7 +22,7 @@ class ButtonList extends NamedElement implements IPrimaryElement{
 		return $this->buttons;
 	}
 
-	public function add(LongFormButton $button) : void{
+	public function append(LongFormButton $button) : void{
 		$this->buttons[] = $button;
 		$this->element[] = $button->getElement();
 	}

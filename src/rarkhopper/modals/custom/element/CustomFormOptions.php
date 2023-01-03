@@ -22,7 +22,7 @@ class CustomFormOptions extends NamedElement implements IPrimaryElement{
 		return $this->options;
 	}
 
-	public function add(ICustomFormOption $option) : void{
+	public function append(ICustomFormOption $option) : void{
 		$this->options[] = $option;
 		$this->element[] = $option->getElement();
 	}

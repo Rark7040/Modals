@@ -32,10 +32,10 @@ class ExampleLongForm extends LongFormBase{
 
 	private function createElement() : LongFormElements{
 		$buttons = new ButtonList();
-		$buttons->add(new LongFormButton('hoge', new ButtonImage(ButtonImage::TYPE_URL, 'https://img/hoge')));
-		$buttons->add(new LongFormButton('aho'));
-		$buttons->add(new LongFormButton('rrrrrrr'));
-		$buttons->add(new LongFormButton('uoooo'));
+		$buttons->append(new LongFormButton('hoge', new ButtonImage(ButtonImage::TYPE_URL, 'https://img/hoge')));
+		$buttons->append(new LongFormButton('aho'));
+		$buttons->append(new LongFormButton('rrrrrrr'));
+		$buttons->append(new LongFormButton('uoooo'));
 		return new LongFormElements('TestForm', 'ボタンを選んでね！', $buttons);
 	}
 
@@ -76,7 +76,7 @@ class ExampleCustomForm extends CustomFormBase{
 
 	private function createElement() : CustomFormElements{
 		$options = new CustomFormOptions();
-		$options->add(new Slider('amount', 'アイテムの数を入力', 0, 0, 100));
+		$options->append(new Slider('amount', 'アイテムの数を入力', 0, 0, 100));
 		return new CustomFormElements('TestForm', $options);
 	}
 

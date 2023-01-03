@@ -8,6 +8,9 @@ use InvalidArgumentException;
 use rarkhopper\modals\IPrimaryElement;
 use rarkhopper\modals\NamedElement;
 
+/**
+ * @internal
+ */
 class FormType extends NamedElement implements IPrimaryElement{
 	public const TYPE_LONG = 'form';
 	public const TYPE_MODAL = 'modal';
