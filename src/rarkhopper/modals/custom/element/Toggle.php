@@ -6,7 +6,7 @@ namespace rarkhopper\modals\custom\element;
 
 use rarkhopper\modals\NamedElement;
 
-class Toggle extends NamedElement{
+class Toggle extends NamedElement implements ICustomFormOption{
 	private string $txt;
 	private bool $default;
 

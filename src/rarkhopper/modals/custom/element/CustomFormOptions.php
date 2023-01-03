@@ -26,5 +26,4 @@ class CustomFormOptions extends NamedElement implements IPrimaryElement{
 		$this->options[] = $button;
 		$this->element[] = $button->getElement();
 	}
-
 }
