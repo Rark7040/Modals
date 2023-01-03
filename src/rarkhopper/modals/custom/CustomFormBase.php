@@ -9,7 +9,6 @@ use rarkhopper\modals\custom\element\CustomFormElements;
 use rarkhopper\modals\custom\element\DropDown;
 use rarkhopper\modals\custom\element\ICustomFormOption;
 use rarkhopper\modals\custom\element\Input;
-use rarkhopper\modals\custom\element\Label;
 use rarkhopper\modals\custom\element\Slider;
 use rarkhopper\modals\custom\element\StepSlider;
 use rarkhopper\modals\custom\element\Toggle;
@@ -18,7 +17,6 @@ use function is_array;
 use function is_bool;
 use function is_int;
 use function is_string;
-use function var_dump;
 
 abstract class CustomFormBase extends FormBase{
 	private CustomFormElements $elements;
