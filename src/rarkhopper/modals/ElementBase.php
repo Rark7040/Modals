@@ -12,9 +12,9 @@ abstract class ElementBase{
 	protected array $element = [];
 
 	/**
-	 * @return array<string, mixed>
+	 * @return string|int|bool|array<string, mixed>
 	 */
-	public function getElement() : array{
+	public function getElement() : array|string|int|bool{
 		return $this->element;
 	}
 }

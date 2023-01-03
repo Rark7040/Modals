@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long;
 
-use rarkhopper\modals\ISingleElement;
 use rarkhopper\modals\PrimaryElement;
 
-class ModalFormButton extends PrimaryElement implements ISingleElement{
+class ModalFormButton extends PrimaryElement{
 	private string $txt;
 
 	public function __construct(string $name, string $txt){
@@ -19,7 +18,7 @@ class ModalFormButton extends PrimaryElement implements ISingleElement{
 		return $this->txt;
 	}
 
-	public function getParameter() : string|int|bool{
+	public function getElement() : array|string|int|bool{
 		return $this->txt;
 	}
 }

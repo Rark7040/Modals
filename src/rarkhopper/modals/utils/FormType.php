@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace rarkhopper\modals\utils;
 
 use InvalidArgumentException;
-use rarkhopper\modals\ISingleElement;
 use rarkhopper\modals\PrimaryElement;
 
-class FormType extends PrimaryElement implements ISingleElement{
+class FormType extends PrimaryElement{
 	public const TYPE_LONG = 'form';
 	public const TYPE_MODAL = 'modal';
 	public const TYPE_CUSTOM = 'custom';
@@ -24,7 +23,7 @@ class FormType extends PrimaryElement implements ISingleElement{
 		parent::__construct('type');
 	}
 
-	public function getParameter() : string|int|bool{
+	public function getElement() : array|string|int|bool{
 		return $this->type;
 	}
 }

@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\utils;
 
-use rarkhopper\modals\ISingleElement;
 use rarkhopper\modals\PrimaryElement;
 
-class FormTitle extends PrimaryElement implements ISingleElement{
+class FormTitle extends PrimaryElement{
 	private string $title;
 
 	public function __construct(string $type){
@@ -15,7 +14,7 @@ class FormTitle extends PrimaryElement implements ISingleElement{
 		parent::__construct('title');
 	}
 
-	public function getParameter() : string|int|bool{
+	public function getElement() : array|string|int|bool{
 		return $this->title;
 	}
 }

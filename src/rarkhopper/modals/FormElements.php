@@ -45,12 +45,7 @@ abstract class FormElements implements JsonSerializable{
 		$jsonArr = [];
 
 		foreach($this->elements as $element){
-			if($element instanceof ISingleElement){
-				$jsonArr[$element->getName()] = $element->getParameter();
-
-			}else{
-				$jsonArr[$element->getName()] = $element->getElement();
-			}
+			$jsonArr[$element->getName()] = $element->getElement();
 		}
 		return $jsonArr;
 	}
