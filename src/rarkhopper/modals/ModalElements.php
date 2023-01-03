@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals;
 
+use InvalidArgumentException;
 use JsonSerializable;
 
 abstract class ModalElements implements JsonSerializable{
@@ -11,8 +12,15 @@ abstract class ModalElements implements JsonSerializable{
 	/** @var array<ElementBase> */
 	protected array $elements = [];
 
+	abstract protected function getElementsType() : string;
+
 	public function __construct(string $title){
 		$this->title = $title;
+	}
+
+	public function appendElement(ElementBase $element) : void{
+		if(!$element instanceof IPrimaryElement) throw new InvalidArgumentException('element must be an IPrimaryElement');
+		$this->elements[] = $element;
 	}
 
 	/**
@@ -31,6 +39,16 @@ abstract class ModalElements implements JsonSerializable{
 	}
 
 	public function jsonSerialize(){
-		return []; //TODO build
+		$jsonArr = [];
+
+		foreach($this->elements as $element){
+			if($element instanceof ISingleElement){
+				$jsonArr[$element->getName()] = $element->getParameter();
+
+			}else{
+				$jsonArr[$element->getName()] = $element->getElement();
+			}
+		}
+		return $jsonArr;
 	}
 }

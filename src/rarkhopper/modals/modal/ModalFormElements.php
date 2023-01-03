@@ -6,4 +6,8 @@ namespace rarkhopper\modals\long;
 
 use rarkhopper\modals\ModalElements;
 
-class ModalFormElements extends ModalElements{}
+class ModalFormElements extends ModalElements{
+	protected function getElementsType() : string{
+		return 'modal';
+	}
+}

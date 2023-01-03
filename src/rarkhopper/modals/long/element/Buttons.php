@@ -10,6 +10,7 @@ use rarkhopper\modals\ElementBase;
  * @internal
  */
 class Buttons extends ElementBase{
+
 	public function __construct(){
 		parent::__construct('buttons');
 	}
