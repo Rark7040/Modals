@@ -41,7 +41,7 @@ abstract class FormElements implements JsonSerializable{
 		return null;
 	}
 
-	public function jsonSerialize(){
+	public function jsonSerialize() {
 		$jsonArr = [];
 
 		foreach($this->elements as $element){

@@ -13,6 +13,9 @@ class Slider extends NamedElement implements ICustomFormOption{
 	private int $min;
 	private int $max;
 
+	/**
+	 * @throws InvalidArgumentException
+	 */
 	public function __construct(string $name, string $txt, int $default, int $min, int $max){
 		parent::__construct($name);
 

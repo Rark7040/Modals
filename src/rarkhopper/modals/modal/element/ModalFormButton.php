@@ -16,6 +16,9 @@ class ModalFormButton extends ElementBase implements IPrimaryElement{
 		$this->txt = $txt;
 	}
 
+	/**
+	 * @throws LogicException
+	 */
 	public function getName() : string{
 		if($this->position === null) throw new LogicException('getName called must be initialized position');
 		return 'button' . ($this->position ? '1' : '2');

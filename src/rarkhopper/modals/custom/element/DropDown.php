@@ -14,6 +14,9 @@ class DropDown extends NamedElement implements ICustomFormOption{
 	/** @var array<string> */
 	private array $options;
 
+	/**
+	 * @throws InvalidArgumentException
+	 */
 	public function __construct(string $name, string $txt, int $default, string ...$options){
 		parent::__construct($name);
 

@@ -14,6 +14,9 @@ class StepSlider extends NamedElement implements ICustomFormOption{
 	/** @var array<string> */
 	private array $steps;
 
+	/**
+	 * @throws InvalidArgumentException
+	 */
 	public function __construct(string $name, string $txt, int $default, string ...$steps){
 		parent::__construct($name);
 
