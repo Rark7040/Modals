@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals;
 
-use JsonSerializable;
-
 /**
  * @internal
  */
-abstract class ElementBase implements JsonSerializable{
+abstract class ElementBase{
 	protected string $name;
-	/** @var array<string, string|int|float|array<string>> */
+	/** @var array<string, mixed> | array<array<string, mixed>> */
 	protected array $element = [];
 
 	public function __construct(string $name){
@@ -22,7 +20,10 @@ abstract class ElementBase implements JsonSerializable{
 		return $this->name;
 	}
 
-	public function jsonSerialize(){
+	/**
+	 * @return array<string, mixed>
+	 */
+	public function getElement() : array{
 		return $this->element;
 	}
 }

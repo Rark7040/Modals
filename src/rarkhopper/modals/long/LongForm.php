@@ -6,6 +6,7 @@ namespace rarkhopper\modals\long;
 
 use pocketmine\player\Player;
 use rarkhopper\modals\ClosureForm;
+use rarkhopper\modals\ModalElements;
 use function is_int;
 
 abstract class LongForm extends ClosureForm{
@@ -15,6 +16,10 @@ abstract class LongForm extends ClosureForm{
 
 	public function __construct(LongFormElements $elements){
 		$this->elements = $elements;
+	}
+
+	protected function getModalElements() : ModalElements{
+		return $this->elements;
 	}
 
 	/**
