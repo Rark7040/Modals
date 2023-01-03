@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals;
+namespace rarkhopper\modals\utils;
 
 use InvalidArgumentException;
+use rarkhopper\modals\ISingleElement;
+use rarkhopper\modals\PrimaryElement;
 
 class FormType extends PrimaryElement implements ISingleElement{
 	public const TYPE_LONG = 'form';

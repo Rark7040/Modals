@@ -6,7 +6,6 @@ namespace rarkhopper\modals\long;
 
 use pocketmine\player\Player;
 use rarkhopper\modals\ClosureForm;
-use rarkhopper\modals\ModalElements;
 use function is_int;
 
 abstract class LongForm extends ClosureForm{
@@ -18,7 +17,7 @@ abstract class LongForm extends ClosureForm{
 		$this->elements = $elements;
 	}
 
-	protected function getModalElements() : ModalElements{
+	protected function getModalElements() : LongFormElements{
 		return $this->elements;
 	}
 
@@ -37,7 +36,7 @@ abstract class LongForm extends ClosureForm{
 	 */
 	private function createResponse(int|bool|array $rawResponse) : ?LongFormResponse{
 		if(!is_int($rawResponse)) return null;
-		$pressedElement = $this->elements->getElements()[$rawResponse] ?? null;
+		$pressedElement = $this->getModalElements()->getButtons()->getAll()[$rawResponse] ?? null;
 
 		if($pressedElement === null) return null;
 		return new LongFormResponse($pressedElement, $rawResponse);

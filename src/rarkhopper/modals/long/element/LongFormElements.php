@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long;
 
-use rarkhopper\modals\FormLabel;
-use rarkhopper\modals\FormType;
 use rarkhopper\modals\long\element\Buttons;
 use rarkhopper\modals\ModalElements;
+use rarkhopper\modals\utils\FormLabel;
+use rarkhopper\modals\utils\FormType;
 
 class LongFormElements extends ModalElements{
 	private Buttons $buttons;

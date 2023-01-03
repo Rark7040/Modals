@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace rarkhopper\modals;
 
 use JsonSerializable;
+use rarkhopper\modals\utils\FormTitle;
 
 abstract class ModalElements implements JsonSerializable{
 	protected string $title;
@@ -25,7 +26,7 @@ abstract class ModalElements implements JsonSerializable{
 	}
 
 	/**
-	 * @return ElementBase[]
+	 * @return PrimaryElement[]
 	 */
 	public function getElements() : array{
 		return $this->elements;

@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals;
+namespace rarkhopper\modals\utils;
+
+use rarkhopper\modals\ISingleElement;
+use rarkhopper\modals\PrimaryElement;
 
 class FormTitle extends PrimaryElement implements ISingleElement{
 	private string $title;
