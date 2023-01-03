@@ -59,27 +59,13 @@ abstract class CustomFormBase extends FormBase{
 	}
 
 	private function validateResponse(ICustomFormOption $option, mixed $rawResponse) : bool{
-		if($option instanceof DropDown){
-			if(!is_int($rawResponse)) return false;
-			return isset($option->getOptions()[$rawResponse]);
-
-		}elseif($option instanceof Input){
-			if(is_string($rawResponse)) return true;
-
-		}elseif($option instanceof Label){
-			var_dump($rawResponse); //TODO: dump
-
-		}elseif($option instanceof Slider){
-			if(!is_int($rawResponse)) return false;
-			return $option->getMin() <= $rawResponse && $rawResponse <= $option->getMax();
-
-		}elseif($option instanceof StepSlider){
-			if(!is_int($rawResponse)) return true;
-			return isset($option->getSteps()[$rawResponse]);
-
-		}elseif($option instanceof Toggle){
-			if(is_bool($rawResponse)) return true;
-		}
-		return false;
+		return match(true){
+			$option instanceof DropDown => is_int($rawResponse) && isset($option->getOptions()[$rawResponse]),
+			$option instanceof Input => is_string($rawResponse),
+			$option instanceof Slider => is_int($rawResponse) && ($option->getMin() <= $rawResponse && $rawResponse <= $option->getMax()),
+			$option instanceof StepSlider => is_int($rawResponse) && isset($option->getSteps()[$rawResponse]),
+			$option instanceof Toggle => is_bool($rawResponse),
+			default => false
+		};
 	}
 }
