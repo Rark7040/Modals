@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long;
 
-use rarkhopper\modals\PrimaryElement;
+use rarkhopper\modals\IPrimaryElement;
+use rarkhopper\modals\NamedElement;
 
-class ModalFormButton extends PrimaryElement{
+class ModalFormButton extends NamedElement implements IPrimaryElement{
 	private string $txt;
 
 	public function __construct(string $name, string $txt){

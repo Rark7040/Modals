@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long\element;
 
-use rarkhopper\modals\PrimaryElement;
+use rarkhopper\modals\IPrimaryElement;
+use rarkhopper\modals\NamedElement;
 
 /**
  * @internal
  */
-class ButtonList extends PrimaryElement{
+class ButtonList extends NamedElement implements IPrimaryElement{
 	/** @var array<LongFormButton> */
 	private array $buttons = [];
 

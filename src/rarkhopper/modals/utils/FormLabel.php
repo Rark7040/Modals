@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\utils;
 
-use rarkhopper\modals\PrimaryElement;
+use rarkhopper\modals\IPrimaryElement;
+use rarkhopper\modals\NamedElement;
 
-class FormLabel extends PrimaryElement{
+class FormLabel extends NamedElement implements IPrimaryElement{
 	private string $label;
 
 	public function __construct(string $label){

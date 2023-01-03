@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace rarkhopper\modals\utils;
 
 use InvalidArgumentException;
-use rarkhopper\modals\PrimaryElement;
+use rarkhopper\modals\IPrimaryElement;
+use rarkhopper\modals\NamedElement;
 
-class FormType extends PrimaryElement{
+class FormType extends NamedElement implements IPrimaryElement{
 	public const TYPE_LONG = 'form';
 	public const TYPE_MODAL = 'modal';
 	public const TYPE_CUSTOM = 'custom';

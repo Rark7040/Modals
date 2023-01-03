@@ -9,7 +9,7 @@ use rarkhopper\modals\utils\FormTitle;
 
 abstract class FormElements implements JsonSerializable{
 	protected string $title;
-	/** @var array<PrimaryElement> */
+	/** @var array<IPrimaryElement> */
 	protected array $elements = [];
 
 	public function __construct(string $title){
@@ -21,12 +21,12 @@ abstract class FormElements implements JsonSerializable{
 		return $this->title;
 	}
 
-	public function appendElement(PrimaryElement $element) : void{
+	public function appendElement(IPrimaryElement $element) : void{
 		$this->elements[] = $element;
 	}
 
 	/**
-	 * @return PrimaryElement[]
+	 * @return IPrimaryElement[]
 	 */
 	public function getElements() : array{
 		return $this->elements;
@@ -34,7 +34,7 @@ abstract class FormElements implements JsonSerializable{
 
 	public function getElementByName(string $name) : ?ElementBase{
 		foreach($this->elements as $element){
-			if(!$element instanceof INamedElement) continue;
+			if(!$element instanceof NamedElement) continue;
 			if($element->getName() !== $name) continue;
 			return $element;
 		}

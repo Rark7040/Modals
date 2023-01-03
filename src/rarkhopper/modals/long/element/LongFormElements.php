@@ -13,16 +13,17 @@ class LongFormElements extends FormElements{
 	private ButtonList $buttons;
 	private string $label;
 
-	public function __construct(string $title, string $label){
+	public function __construct(string $title, string $label, ButtonList $buttons){
 		parent::__construct($title);
-		$this->buttons = new ButtonList();
 		$this->label = $label;
+		$this->buttons = $buttons;
 		$this->initElement();
 	}
 
 	private function initElement() : void{
 		$this->appendElement(new FormLabel($this->label));
 		$this->appendElement(new FormType(FormType::TYPE_LONG));
+		$this->appendElement($this->buttons);
 	}
 
 	public function getLabel() : string{

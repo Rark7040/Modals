@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals;
 
-class NamedElement extends ElementBase implements INamedElement{
+class NamedElement extends ElementBase{
 	private string $name;
 
 	public function __construct(string $name){
