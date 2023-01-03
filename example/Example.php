@@ -15,6 +15,7 @@ use rarkhopper\modals\long\FalseButton;
 use rarkhopper\modals\long\LongFormBase;
 use rarkhopper\modals\long\LongFormElements;
 use rarkhopper\modals\long\LongFormResponse;
+use rarkhopper\modals\long\ModalFormButton;
 use rarkhopper\modals\long\ModalFormElements;
 use rarkhopper\modals\long\TrueButton;
 use rarkhopper\modals\modal\element\ModalFormResponse;
@@ -57,8 +58,8 @@ class ExampleModalForm extends ModalFormBase{
 		return new ModalFormElements(
 			'TestForm',
 			'あなたはバッタ？',
-			new TrueButton('yes'),
-			new FalseButton('no')
+			new ModalFormButton('yes'),
+			new ModalFormButton('no')
 		);
 	}
 
