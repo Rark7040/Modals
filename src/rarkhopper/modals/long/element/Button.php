@@ -29,6 +29,6 @@ class Button extends NamedElement{
 		$this->element['text'] = $this->txt;
 
 		if($this->img === null) return;
-		$this->element['image'] = $this->img->toArray();
+		$this->element['image'] = $this->img->getElement();
 	}
 }

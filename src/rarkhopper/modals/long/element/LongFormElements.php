@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long;
 
+use rarkhopper\modals\FormLabel;
 use rarkhopper\modals\FormType;
 use rarkhopper\modals\long\element\Buttons;
 use rarkhopper\modals\ModalElements;
@@ -16,10 +17,11 @@ class LongFormElements extends ModalElements{
 		parent::__construct($title);
 		$this->buttons = new Buttons();
 		$this->label = $label;
-		$this->init();
+		$this->initElement();
 	}
 
-	private function init() : void{
+	private function initElement() : void{
+		$this->appendElement(new FormLabel($this->label));
 		$this->appendElement(new FormType(FormType::TYPE_LONG));
 	}
 

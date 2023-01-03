@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace rarkhopper\modals\long\element;
 
 use InvalidArgumentException;
+use rarkhopper\modals\ElementBase;
 
-class ButtonImage{
+class ButtonImage extends ElementBase{
 	public const TYPE_URL = 'url';
 	public const TYPE_PATH = 'path';
 
@@ -20,6 +21,7 @@ class ButtonImage{
 		if($type !== self::TYPE_URL && $type !== self::TYPE_PATH) throw new InvalidArgumentException('invalid type ' . $type);
 		$this->type = $type;
 		$this->source = $source;
+		$this->putElement();
 	}
 
 	public function getSourceType() : string{
@@ -30,13 +32,8 @@ class ButtonImage{
 		return $this->source;
 	}
 
-	/**
-	 * @return array<string, string>
-	 */
-	public function toArray() : array{
-		return [
-			'type' => $this->type,
-			'data' => $this->source
-		];
+	private function putElement() : void{
+		$this->element['type'] = $this->type;
+		$this->element['data'] = $this->source;
 	}
 }

@@ -13,6 +13,11 @@ abstract class ModalElements implements JsonSerializable{
 
 	public function __construct(string $title){
 		$this->title = $title;
+		$this->appendElement(new FormTitle($title));
+	}
+
+	public function getTitle() : string{
+		return $this->title;
 	}
 
 	public function appendElement(PrimaryElement $element) : void{
