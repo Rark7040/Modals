@@ -9,8 +9,8 @@ use rarkhopper\modals\PrimaryElement;
 /**
  * @internal
  */
-class Buttons extends PrimaryElement{
-	/** @var array<Button> */
+class ButtonList extends PrimaryElement{
+	/** @var array<LongFormButton> */
 	private array $buttons = [];
 
 	public function __construct(){
@@ -18,13 +18,13 @@ class Buttons extends PrimaryElement{
 	}
 
 	/**
-	 * @return array<Button>
+	 * @return array<LongFormButton>
 	 */
 	public function getAll() : array{
 		return $this->buttons;
 	}
 
-	public function add(Button $button) : void{
+	public function add(LongFormButton $button) : void{
 		$this->buttons[] = $button;
 		$this->element[] = $button->getElement();
 	}

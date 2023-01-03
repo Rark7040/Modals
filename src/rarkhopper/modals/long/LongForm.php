@@ -17,7 +17,7 @@ abstract class LongForm extends ClosureForm{
 		$this->elements = $elements;
 	}
 
-	protected function getModalElements() : LongFormElements{
+	protected function getElements() : LongFormElements{
 		return $this->elements;
 	}
 
@@ -36,7 +36,7 @@ abstract class LongForm extends ClosureForm{
 	 */
 	private function createResponse(int|bool|array $rawResponse) : ?LongFormResponse{
 		if(!is_int($rawResponse)) return null;
-		$pressedElement = $this->getModalElements()->getButtons()->getAll()[$rawResponse] ?? null;
+		$pressedElement = $this->getElements()->getButtons()->getAll()[$rawResponse] ?? null;
 
 		if($pressedElement === null) return null;
 		return new LongFormResponse($pressedElement, $rawResponse);

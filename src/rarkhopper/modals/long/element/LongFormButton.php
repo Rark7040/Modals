@@ -6,7 +6,7 @@ namespace rarkhopper\modals\long\element;
 
 use rarkhopper\modals\NamedElement;
 
-class Button extends NamedElement{
+class LongFormButton extends NamedElement{
 	private string $txt;
 	private ?ButtonImage $img;
 

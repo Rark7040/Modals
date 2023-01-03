@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\modal;
+namespace rarkhopper\modals\modal\element;
 
 use rarkhopper\modals\ElementBase;
 

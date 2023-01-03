@@ -19,7 +19,7 @@ abstract class ClosureForm implements Form{
 	 * @param int|bool|array<int, int|string> $rawResponse
 	 */
 	abstract protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void;
-	abstract protected function getModalElements() : ModalElements;
+	abstract protected function getElements() : FormElements;
 
 	protected function onNullHandle(Player $player) : void{
 		//NOOP
@@ -40,6 +40,6 @@ abstract class ClosureForm implements Form{
 	}
 
 	public function jsonSerialize(){
-		return $this->getModalElements()->jsonSerialize();
+		return $this->getElements()->jsonSerialize();
 	}
 }

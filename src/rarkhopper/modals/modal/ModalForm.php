@@ -6,17 +6,23 @@ namespace rarkhopper\modals\modal;
 
 use pocketmine\player\Player;
 use rarkhopper\modals\ClosureForm;
-use rarkhopper\modals\long\LongFormResponse;
-use rarkhopper\modals\ModalElements;
+use rarkhopper\modals\long\LongFormElements;
+use rarkhopper\modals\long\ModalFormElements;
+use rarkhopper\modals\FormElements;
+use rarkhopper\modals\modal\element\ModalFormResponse;
 use function is_int;
 
 abstract class ModalForm extends ClosureForm{
-	private ModalElements $elements;
+	private ModalFormElements $elements;
 
-	abstract protected function onSubmit(Player $player, LongFormResponse $response) : void;
+	abstract protected function onSubmit(Player $player, ModalFormResponse $response) : void;
 
-	public function __construct(ModalElements $elements){
+	public function __construct(ModalFormElements $elements){
 		$this->elements = $elements;
+	}
+
+	protected function getElements() : ModalFormElements{
+		return $this->elements;
 	}
 
 	/**
@@ -32,11 +38,10 @@ abstract class ModalForm extends ClosureForm{
 	/**
 	 * @param int|bool|array<int, int|string> $rawResponse
 	 */
-	private function createResponse(int|bool|array $rawResponse) : ?LongFormResponse{
-		if(!is_int($rawResponse)) return null;
-		$pressedElement = $this->elements->getElements()[$rawResponse] ?? null;
-
-		if($pressedElement === null) return null;
-		return new LongFormResponse($pressedElement, $rawResponse);
+	private function createResponse(int|bool|array $rawResponse) : ?ModalFormResponse{
+		if(!is_bool($rawResponse)) return null;
+		$element = $this->getElements();
+		$pressedElement = $rawResponse ? $element->getTrueButton() : $element->getFalseButton();
+		return new ModalFormResponse($pressedElement, $rawResponse);
 	}
 }

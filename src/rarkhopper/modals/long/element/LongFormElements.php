@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long;
 
-use rarkhopper\modals\long\element\Buttons;
-use rarkhopper\modals\ModalElements;
+use rarkhopper\modals\long\element\ButtonList;
+use rarkhopper\modals\FormElements;
 use rarkhopper\modals\utils\FormLabel;
 use rarkhopper\modals\utils\FormType;
 
-class LongFormElements extends ModalElements{
-	private Buttons $buttons;
+class LongFormElements extends FormElements{
+	private ButtonList $buttons;
 	private string $label;
 
-	public function __construct(string $title, string $label = ''){
+	public function __construct(string $title, string $label){
 		parent::__construct($title);
-		$this->buttons = new Buttons();
+		$this->buttons = new ButtonList();
 		$this->label = $label;
 		$this->initElement();
 	}
@@ -29,7 +29,7 @@ class LongFormElements extends ModalElements{
 		return $this->label;
 	}
 
-	public function getButtons() : Buttons{
+	public function getButtons() : ButtonList{
 		return $this->buttons;
 	}
 }
