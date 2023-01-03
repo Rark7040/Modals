@@ -9,7 +9,7 @@ use rarkhopper\modals\PrimaryElement;
 class FormLabel extends PrimaryElement{
 	private string $label;
 
-	public function __construct(string $label = ''){
+	public function __construct(string $label){
 		$this->label = $label;
 		parent::__construct('content');
 	}
