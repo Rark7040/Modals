@@ -6,11 +6,9 @@ namespace rarkhopper\modals\modal;
 
 use pocketmine\player\Player;
 use rarkhopper\modals\ClosureForm;
-use rarkhopper\modals\long\LongFormElements;
 use rarkhopper\modals\long\ModalFormElements;
-use rarkhopper\modals\FormElements;
 use rarkhopper\modals\modal\element\ModalFormResponse;
-use function is_int;
+use function is_bool;
 
 abstract class ModalForm extends ClosureForm{
 	private ModalFormElements $elements;

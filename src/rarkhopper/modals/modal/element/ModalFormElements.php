@@ -10,10 +10,10 @@ use rarkhopper\modals\utils\FormType;
 
 class ModalFormElements extends FormElements{
 	private string $label;
-	private ModalFormButton $trueButton;
-	private ModalFormButton $falseButton;
+	private TrueButton $trueButton;
+	private FalseButton $falseButton;
 
-	public function __construct(string $title, string $label, ModalFormButton $trueButton, ModalFormButton $falseButton){
+	public function __construct(string $title, string $label, TrueButton $trueButton, FalseButton $falseButton){
 		parent::__construct($title);
 		$this->label = $label;
 		$this->trueButton = $trueButton;
@@ -30,11 +30,11 @@ class ModalFormElements extends FormElements{
 		return $this->label;
 	}
 
-	public function getTrueButton() : ModalFormButton{
+	public function getTrueButton() : TrueButton{
 		return $this->trueButton;
 	}
 
-	public function getFalseButton() : ModalFormButton{
+	public function getFalseButton() : FalseButton{
 		return $this->falseButton;
 	}
 }

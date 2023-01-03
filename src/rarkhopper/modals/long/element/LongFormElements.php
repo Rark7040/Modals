@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long;
 
-use rarkhopper\modals\long\element\ButtonList;
 use rarkhopper\modals\FormElements;
+use rarkhopper\modals\long\element\ButtonList;
 use rarkhopper\modals\utils\FormLabel;
 use rarkhopper\modals\utils\FormType;
 
