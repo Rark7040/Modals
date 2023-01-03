@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long\element;
 
-use rarkhopper\modals\ElementBase;
+use rarkhopper\modals\NamedElement;
 
-class Button extends ElementBase{
+class Button extends NamedElement{
 	private string $txt;
 	private ?ButtonImage $img;
 

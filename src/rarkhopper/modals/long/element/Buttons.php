@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\long\element;
 
-use rarkhopper\modals\ElementBase;
+use rarkhopper\modals\PrimaryElement;
 
 /**
  * @internal
  */
-class Buttons extends ElementBase{
-
+class Buttons extends PrimaryElement{
 	public function __construct(){
 		parent::__construct('buttons');
 	}

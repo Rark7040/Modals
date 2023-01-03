@@ -6,7 +6,7 @@ namespace rarkhopper\modals;
 
 use InvalidArgumentException;
 
-class FormType extends ElementBase implements IPrimaryElement, ISingleElement{
+class FormType extends PrimaryElement implements ISingleElement{
 	public const TYPE_LONG = 'form';
 	public const TYPE_MODAL = 'modal';
 	public const TYPE_CUSTOM = 'custom';

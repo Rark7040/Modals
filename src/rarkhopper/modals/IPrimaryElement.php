@@ -4,4 +4,4 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals;
 
-interface IPrimaryElement{}
+interface IPrimaryElement extends INamedElement{}

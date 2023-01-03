@@ -22,7 +22,7 @@ abstract class ModalForm extends ClosureForm{
 	/**
 	 * @inheritdoc
 	 */
-	protected function internalHandlingResponse(Player $player, int|bool|array $rawResponse) : void{
+	protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void{
 		$response = $this->createResponse($rawResponse);
 
 		if($response === null) return;

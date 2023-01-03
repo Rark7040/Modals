@@ -30,8 +30,4 @@ class LongFormElements extends ModalElements{
 	public function getButtons() : Buttons{
 		return $this->buttons;
 	}
-
-	protected function getElementsType() : string{
-		return 'form';
-	}
 }
