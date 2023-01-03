@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals;
+namespace rarkhopper\modals\custom;
 
 use Closure;
 use pocketmine\player\Player;
+use rarkhopper\modals\ClosureForm;
 use function is_array;
 
 class CustomForm extends ClosureForm{
@@ -20,9 +21,9 @@ class CustomForm extends ClosureForm{
 	/**
 	 * @inheritdoc
 	 */
-	protected function onSubmit(Player $player, int|bool|array $response) : void{
-		if(!$this->validateResponse($response) || $this->handler === null) return;
-		($this->handler)($player, (array) $response);
+	protected function internalHandlingResponse(Player $player, int|bool|array $rawResponse) : void{
+		if(!$this->validateResponse($rawResponse) || $this->handler === null) return;
+		($this->handler)($player, (array) $rawResponse);
 	}
 
 	private function validateResponse(mixed $response) : bool{
