@@ -4,22 +4,34 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\custom;
 
-use rarkhopper\modals\long\element\LongFormButton;
+use rarkhopper\modals\custom\element\ICustomFormOption;
 
 class CustomFormResponse{
-	private LongFormButton $element;
-	private int $raw;
+	/** @var array<ICustomFormOption> */
+	private array $elements;
+	/** @var array<int, string|int|bool>  */
+	private array $raw;
 
-	public function __construct(LongFormButton $element, int $raw){
-		$this->element = $element;
+	/**
+	 * @param array<ICustomFormOption> $elements
+	 * @param array<string|int|bool>   $raw
+	 */
+	public function __construct(array $elements, array $raw){
+		$this->elements = $elements;
 		$this->raw = $raw;
 	}
 
-	public function getPressedElement() : LongFormButton{
-		return $this->element;
+	/**
+	 * @return ICustomFormOption[]
+	 */
+	public function getAllElements() : array{
+		return $this->elements;
 	}
 
-	public function getRawResponse() : int{
+	/**
+	 * @return array<int, mixed>
+	 */
+	public function getRawResponse() : array{
 		return $this->raw;
 	}
 }

@@ -6,6 +6,7 @@ namespace rarkhopper\modals\custom\element;
 
 use InvalidArgumentException;
 use rarkhopper\modals\NamedElement;
+use function count;
 
 class DropDown extends NamedElement implements ICustomFormOption{
 	private string $txt;

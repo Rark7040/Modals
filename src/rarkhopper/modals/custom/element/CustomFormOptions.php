@@ -8,7 +8,7 @@ use rarkhopper\modals\IPrimaryElement;
 use rarkhopper\modals\NamedElement;
 
 class CustomFormOptions extends NamedElement implements IPrimaryElement{
-	/** @var array<NamedElement> */
+	/** @var array<ICustomFormOption> */
 	private array $options = [];
 
 	public function __construct(){
@@ -16,14 +16,14 @@ class CustomFormOptions extends NamedElement implements IPrimaryElement{
 	}
 
 	/**
-	 * @return array<NamedElement>
+	 * @return array<ICustomFormOption>
 	 */
 	public function getAll() : array{
 		return $this->options;
 	}
 
-	public function add(NamedElement $button) : void{
-		$this->options[] = $button;
-		$this->element[] = $button->getElement();
+	public function add(ICustomFormOption $option) : void{
+		$this->options[] = $option;
+		$this->element[] = $option->getElement();
 	}
 }
