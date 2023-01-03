@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\modal\element;
 
-use rarkhopper\modals\ElementBase;
+use rarkhopper\modals\long\ModalFormButton;
 
 class ModalFormResponse{
-	private ElementBase $element;
+	private ModalFormButton $element;
 	private bool $raw;
 
-	public function __construct(ElementBase $element, bool $raw){
+	public function __construct(ModalFormButton $element, bool $raw){
 		$this->element = $element;
 		$this->raw = $raw;
 	}
 
-	public function getPressedElement() : ElementBase{
+	public function getPressedElement() : ModalFormButton{
 		return $this->element;
 	}
 
