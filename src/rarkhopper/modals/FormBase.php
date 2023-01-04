@@ -63,7 +63,6 @@ abstract class FormBase implements Form{
 		}catch(Exception $err){ //cast error
 			throw new FormValidationException($err->getMessage());
 		}
-
 	}
 
 	public function jsonSerialize(){
