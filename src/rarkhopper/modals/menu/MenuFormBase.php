@@ -2,27 +2,28 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\long;
+namespace rarkhopper\modals\menu;
 
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use rarkhopper\modals\FormBase;
+use rarkhopper\modals\menu\element\MenuFormElements;
 use function is_int;
 
-abstract class LongFormBase extends FormBase{
-	private LongFormElements $elements;
+abstract class MenuFormBase extends FormBase{
+	private MenuFormElements $elements;
 
 	/**
 	 * @throws FormValidationException
 	 * フォームのボタンが押された時の処理
 	 */
-	abstract protected function onSubmit(Player $player, LongFormResponse $response) : void;
+	abstract protected function onSubmit(Player $player, MenuFormResponse $response) : void;
 
-	public function __construct(LongFormElements $elements){
+	public function __construct(MenuFormElements $elements){
 		$this->elements = $elements;
 	}
 
-	protected function getElements() : LongFormElements{
+	protected function getElements() : MenuFormElements{
 		return $this->elements;
 	}
 
@@ -34,10 +35,10 @@ abstract class LongFormBase extends FormBase{
 		$this->onSubmit($player, $response);
 	}
 
-	private function createResponse(int $rawResponse) : ?LongFormResponse{
+	private function createResponse(int $rawResponse) : ?MenuFormResponse{
 		$pressedElement = $this->getElements()->getButtons()->getAllButtons()[$rawResponse] ?? null;
 
 		if($pressedElement === null) return null;
-		return new LongFormResponse($pressedElement, $rawResponse);
+		return new MenuFormResponse($pressedElement, $rawResponse);
 	}
 }

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\long;
+namespace rarkhopper\modals\menu\element;
 
 use rarkhopper\modals\FormElements;
-use rarkhopper\modals\long\element\ButtonList;
+use rarkhopper\modals\menu\element\ButtonList;
 use rarkhopper\modals\utils\FormLabel;
 use rarkhopper\modals\utils\FormType;
 
 /**
  * モーダルフォームのスタイルを定義したクラス
- * Jsonに適用される値は{@see LongFormElements::__construct}の時点で固定され不変です
+ * Jsonに適用される値は{@see MenuFormElements::__construct}の時点で固定され不変です
  */
-class LongFormElements extends FormElements{
+class MenuFormElements extends FormElements{
 	private ButtonList $buttons;
 	private string $label;
 

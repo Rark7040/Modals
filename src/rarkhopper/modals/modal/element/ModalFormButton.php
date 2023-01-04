@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\long;
+namespace rarkhopper\modals\modal\element;
 
 use LogicException;
 use rarkhopper\modals\ElementBase;
