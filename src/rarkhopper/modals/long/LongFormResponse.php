@@ -15,10 +15,16 @@ class LongFormResponse{
 		$this->raw = $raw;
 	}
 
+	/**
+	 * @return LongFormButton クライアント側で押されたボタンのインスタンス
+	 */
 	public function getPressedElement() : LongFormButton{
 		return $this->element;
 	}
 
+	/**
+	 * @return int サーバーサイドに送られてきた生データ
+	 */
 	public function getRawResponse() : int{
 		return $this->raw;
 	}

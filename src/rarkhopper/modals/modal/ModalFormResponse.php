@@ -15,10 +15,16 @@ class ModalFormResponse{
 		$this->raw = $raw;
 	}
 
+	/**
+	 * @return ModalFormButton クライアント側で押されたボタンのインスタンス
+	 */
 	public function getPressedElement() : ModalFormButton{
 		return $this->element;
 	}
 
+	/**
+	 * @return bool サーバーサイドに送られてきた生データ
+	 */
 	public function getRawResponse() : bool{
 		return $this->raw;
 	}

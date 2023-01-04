@@ -8,6 +8,10 @@ use rarkhopper\modals\FormElements;
 use rarkhopper\modals\utils\FormLabel;
 use rarkhopper\modals\utils\FormType;
 
+/**
+ * モーダルフォームのスタイルを定義したクラス
+ * Jsonに適用される値は{@see ModalFormElements::__construct}の時点で固定され不変です
+ */
 class ModalFormElements extends FormElements{
 	private string $label;
 	private ModalFormButton $trueButton;

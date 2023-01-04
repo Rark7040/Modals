@@ -18,10 +18,14 @@ class ButtonList extends NamedElement implements IPrimaryElement{
 	/**
 	 * @return array<LongFormButton>
 	 */
-	public function getAll() : array{
+	public function getAllButtons() : array{
 		return $this->buttons;
 	}
 
+	/**
+	 * @return void
+	 * フォームにボタンを追加します
+	 */
 	public function append(LongFormButton $button) : void{
 		$this->buttons[] = $button;
 		$this->element[] = $button->getElement();

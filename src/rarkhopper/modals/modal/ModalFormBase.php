@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\modal;
 
+use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use rarkhopper\modals\FormBase;
 use rarkhopper\modals\long\ModalFormElements;
@@ -13,6 +14,10 @@ use function is_bool;
 abstract class ModalFormBase extends FormBase{
 	private ModalFormElements $elements;
 
+	/**
+	 * @throws FormValidationException
+	 * フォームのボタンが押された時の処理
+	 */
 	abstract protected function onSubmit(Player $player, ModalFormResponse $response) : void;
 
 	public function __construct(ModalFormElements $elements){

@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\custom;
 
+use function is_bool;
+use function is_int;
+use function is_string;
+
 class CustomFormResponse{
 	/** @var array<string, string|int|bool> */
 	private array $response;

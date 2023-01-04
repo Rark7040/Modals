@@ -9,6 +9,10 @@ use rarkhopper\modals\long\element\ButtonList;
 use rarkhopper\modals\utils\FormLabel;
 use rarkhopper\modals\utils\FormType;
 
+/**
+ * モーダルフォームのスタイルを定義したクラス
+ * Jsonに適用される値は{@see LongFormElements::__construct}の時点で固定され不変です
+ */
 class LongFormElements extends FormElements{
 	private ButtonList $buttons;
 	private string $label;

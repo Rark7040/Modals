@@ -12,7 +12,7 @@ abstract class ElementBase{
 	protected array $element = [];
 
 	/**
-	 * @return array<string, mixed>|string|int|bool
+	 * @return array<string, mixed>|string|int|bool フォームをjson化したときに小要素となる値
 	 */
 	public function getElement() : array|string|int|bool{
 		return $this->element;

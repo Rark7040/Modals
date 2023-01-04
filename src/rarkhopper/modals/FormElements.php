@@ -20,6 +20,9 @@ abstract class FormElements implements JsonSerializable{
 		$this->appendElement(new FormTitle($title));
 	}
 
+	/**
+	 * @return string フォームのタイトルテキスト
+	 */
 	public function getTitle() : string{
 		return $this->title;
 	}
@@ -35,15 +38,9 @@ abstract class FormElements implements JsonSerializable{
 		return $this->elements;
 	}
 
-	public function getElementByName(string $name) : ?ElementBase{
-		foreach($this->elements as $element){
-			if(!$element instanceof NamedElement) continue;
-			if($element->getName() !== $name) continue;
-			return $element;
-		}
-		return null;
-	}
-
+	/**
+	 * @return array<string, mixed> Minecraftのフォームスタイルが定義されているJsonに変換可能な配列
+	 */
 	public function jsonSerialize() {
 		$jsonArr = [];
 

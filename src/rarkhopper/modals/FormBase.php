@@ -22,10 +22,18 @@ abstract class FormBase implements Form{
 	abstract protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void;
 	abstract protected function getElements() : FormElements;
 
-	protected function onNullHandle(Player $player) : void{
+	/**
+	 * @return void
+	 * フォームのボタンを何も押さずに閉じた時の処理
+	 */
+	protected function handleClosed(Player $player) : void{
 		//NOOP
 	}
 
+	/**
+	 * @return void
+	 * フォームを重複しないように送信します
+	 */
 	public function send(Player $player) : void{
 		$refClass = new ReflectionClass($player);
 		$refProp = $refClass->getProperty('forms');
@@ -41,7 +49,7 @@ abstract class FormBase implements Form{
 	 */
 	public function handleResponse(Player $player, $data) : void{
 		if($data === null){
-			$this->onNullHandle($player);
+			$this->handleClosed($player);
 			return;
 		}
 

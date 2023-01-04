@@ -22,6 +22,10 @@ class CustomFormOptions extends NamedElement implements IPrimaryElement{
 		return $this->options;
 	}
 
+	/**
+	 * @return void
+	 * カスタムフォームにインプットやスライダーなどのオプションを追加します
+	 */
 	public function append(ICustomFormOption $option) : void{
 		$this->options[] = $option;
 		$this->element[] = $option->getElement();

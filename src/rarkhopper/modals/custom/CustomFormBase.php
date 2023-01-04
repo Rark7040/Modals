@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\custom;
 
+use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use rarkhopper\modals\custom\element\CustomFormElements;
 use rarkhopper\modals\custom\element\DropDown;
@@ -21,6 +22,10 @@ use function is_string;
 abstract class CustomFormBase extends FormBase{
 	private CustomFormElements $elements;
 
+	/**
+	 * @throws FormValidationException
+	 * フォームのボタンが押された時の処理
+	 */
 	abstract protected function onSubmit(Player $player, CustomFormResponse $response) : void;
 
 	public function __construct(CustomFormElements $elements){
