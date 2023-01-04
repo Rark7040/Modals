@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\long\element;
+namespace rarkhopper\modals\menu\element;
 
 use rarkhopper\modals\IPrimaryElement;
 use rarkhopper\modals\NamedElement;
@@ -23,11 +23,15 @@ class ButtonList extends NamedElement implements IPrimaryElement{
 	}
 
 	/**
-	 * @return void
 	 * フォームにボタンを追加します
+	 *
+	 * @param LongFormButton $button
+	 *
+	 * @return ButtonList
 	 */
-	public function append(LongFormButton $button) : void{
+	public function append(LongFormButton $button) : ButtonList{
 		$this->buttons[] = $button;
 		$this->element[] = $button->getElement();
+		return $this;
 	}
 }

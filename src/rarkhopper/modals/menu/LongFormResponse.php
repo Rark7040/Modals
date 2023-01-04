@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\long;
+namespace rarkhopper\modals\menu;
 
-use rarkhopper\modals\long\element\LongFormButton;
+use rarkhopper\modals\menu\element\LongFormButton;
 
 class LongFormResponse{
 	private LongFormButton $element;

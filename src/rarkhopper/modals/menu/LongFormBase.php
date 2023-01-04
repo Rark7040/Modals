@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\long;
+namespace rarkhopper\modals\menu;
 
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;

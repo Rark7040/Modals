@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\long\element;
+namespace rarkhopper\modals\menu\element;
 
 use rarkhopper\modals\ElementBase;
 

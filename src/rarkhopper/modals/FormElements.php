@@ -41,7 +41,7 @@ abstract class FormElements implements JsonSerializable{
 	/**
 	 * @return array<string, mixed> Minecraftのフォームスタイルが定義されているJsonに変換可能な配列
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		$jsonArr = [];
 
 		foreach($this->elements as $element){
