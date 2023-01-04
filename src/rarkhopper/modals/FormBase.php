@@ -20,7 +20,7 @@ use function is_int;
 abstract class FormBase implements Form{
 	/**
 	 * @param int|bool|array<int, int|string|bool> $rawResponse
-	 * @throws Exception
+	 * @throws FormValidationException
 	 */
 	abstract protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void;
 	abstract protected function getElements() : FormElements;
@@ -50,6 +50,7 @@ abstract class FormBase implements Form{
 
 	/**
 	 * @param mixed $data
+	 * @throws FormValidationException
 	 */
 	public function handleResponse(Player $player, $data) : void{
 		if($data === null){
@@ -58,12 +59,7 @@ abstract class FormBase implements Form{
 		}
 
 		if(!is_int($data) && !is_array($data) && !is_bool($data)) throw new FormValidationException('received invalid response data');
-		try{
-			$this->internalHandleResponse($player, $data);
-
-		}catch(Exception $err){ //cast error
-			throw new FormValidationException($err->getMessage());
-		}
+		$this->internalHandleResponse($player, $data);
 	}
 
 	public function jsonSerialize(){
