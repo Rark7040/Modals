@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace rarkhopper\modals\menu\element;
 
 use rarkhopper\modals\FormElements;
-use rarkhopper\modals\menu\element\ButtonList;
 use rarkhopper\modals\utils\FormLabel;
 use rarkhopper\modals\utils\FormType;
 

@@ -36,6 +36,7 @@ abstract class FormBase implements Form{
 	/**
 	 * @return void
 	 * フォームを重複しないように送信します
+	 * フォームチェーン用に2つまで重複するケースが考慮されます
 	 */
 	public function send(Player $player) : void{
 		$refClass = new ReflectionClass($player);
@@ -43,7 +44,7 @@ abstract class FormBase implements Form{
 		$refProp->setAccessible(true);
 		$receivedForms = $refProp->getValue($player);
 
-		if(!is_array($receivedForms) || count($receivedForms) > 0) return;
+		if(!is_array($receivedForms) || count($receivedForms) > 1) return;
 		$player->sendForm($this);
 	}
 

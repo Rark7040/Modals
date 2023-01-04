@@ -14,7 +14,7 @@ use rarkhopper\modals\NamedElement;
 class FormType extends NamedElement implements IPrimaryElement{
 	public const TYPE_LONG = 'form';
 	public const TYPE_MODAL = 'modal';
-	public const TYPE_CUSTOM = 'custom';
+	public const TYPE_CUSTOM = 'custom_form';
 
 	private string $type;
 
