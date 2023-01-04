@@ -7,6 +7,12 @@ namespace rarkhopper\modals\custom;
 class CustomFormResponse{
 	/** @var array<string, string|int|bool> */
 	private array $response;
+	/** @var array<int> */
+	private array $intResponses = [];
+	/** @var array<string> */
+	private array $stringResponses = [];
+	/** @var array<bool> */
+	private array $boolResponses = [];
 	/** @var array<int, string|int|bool>  */
 	private array $raw;
 
@@ -17,13 +23,53 @@ class CustomFormResponse{
 	public function __construct(array $response, array $raw){
 		$this->response = $response;
 		$this->raw = $raw;
+		$this->allocateResponse($response);
+	}
+
+	/**
+	 * @param array<string, string|int|bool> $response
+	 */
+	private function allocateResponse(array $response) : void{
+		foreach($response as $name => $res){
+			if(is_int($res)){
+				$this->intResponses[] = $res;
+
+			}elseif(is_string($res)){
+				$this->stringResponses[] = $res;
+
+			}elseif(is_bool($res)){
+				$this->boolResponses[] = $res;
+
+			}
+		}
 	}
 
 	/**
 	 * @return array<string, mixed>
 	 */
-	public function getResponse() : array{
+	public function getAllResponse() : array{
 		return $this->response;
+	}
+
+	/**
+	 * @return String[]
+	 */
+	public function getStringResponses() : array{
+		return $this->stringResponses;
+	}
+
+	/**
+	 * @return int[]
+	 */
+	public function getIntResponses() : array{
+		return $this->intResponses;
+	}
+
+	/**
+	 * @return bool[]
+	 */
+	public function getBoolResponses() : array{
+		return $this->boolResponses;
 	}
 
 	/**

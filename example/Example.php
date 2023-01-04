@@ -62,7 +62,7 @@ class ExampleModalForm extends ModalFormBase{
 	}
 
 	protected function onSubmit(Player $player, ModalFormResponse $response) : void{
-		$button = $response->getPressedElement(); //TrueButton{txt: yes}
+		$button = $response->getPressedElement(); //ModalFormButton{txt: yes}
 		$buttonName = $response->getPressedElement()->getText(); //yes
 		$buttonPosition = $response->getRawResponse(); //true
 	}
@@ -81,6 +81,6 @@ class ExampleCustomForm extends CustomFormBase{
 	}
 
 	protected function onSubmit(Player $player, CustomFormResponse $response) : void{
-		$amount = $response->getResponse()['amount']; //TODO 型安全にしたい
+		$amount = $response->getIntResponses()['amount'];
 	}
 }
