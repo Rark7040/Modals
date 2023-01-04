@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals;
 
+use Exception;
 use pocketmine\form\Form;
+use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use ReflectionClass;
 use function count;
@@ -18,6 +20,7 @@ use function is_int;
 abstract class FormBase implements Form{
 	/**
 	 * @param int|bool|array<int, int|string|bool> $rawResponse
+	 * @throws Exception
 	 */
 	abstract protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void;
 	abstract protected function getElements() : FormElements;
@@ -53,8 +56,14 @@ abstract class FormBase implements Form{
 			return;
 		}
 
-		if(!is_int($data) && !is_array($data) && !is_bool($data)) return;
-		$this->internalHandleResponse($player, $data);
+		if(!is_int($data) && !is_array($data) && !is_bool($data)) throw new FormValidationException('received invalid response data');
+		try{
+			$this->internalHandleResponse($player, $data);
+
+		}catch(Exception $err){ //cast error
+			throw new FormValidationException($err->getMessage());
+		}
+
 	}
 
 	public function jsonSerialize(){
