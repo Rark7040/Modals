@@ -7,7 +7,7 @@ namespace rarkhopper\modals\modal;
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use rarkhopper\modals\FormBase;
-use rarkhopper\modals\long\ModalFormElements;
+use rarkhopper\modals\modal\element\ModalFormElements;
 use rarkhopper\modals\modal\element\ModalFormResponse;
 use function is_bool;
 

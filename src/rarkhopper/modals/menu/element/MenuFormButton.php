@@ -6,7 +6,7 @@ namespace rarkhopper\modals\menu\element;
 
 use rarkhopper\modals\ElementBase;
 
-class LongFormButton extends ElementBase{
+class MenuFormButton extends ElementBase{
 	private string $txt;
 	private ?ButtonImage $img;
 

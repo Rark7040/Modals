@@ -8,39 +8,39 @@ use rarkhopper\modals\custom\CustomFormResponse;
 use rarkhopper\modals\custom\element\CustomFormElements;
 use rarkhopper\modals\custom\element\CustomFormOptions;
 use rarkhopper\modals\custom\element\Slider;
-use rarkhopper\modals\long\element\ButtonImage;
-use rarkhopper\modals\long\element\ButtonList;
-use rarkhopper\modals\long\element\LongFormButton;
-use rarkhopper\modals\long\LongFormBase;
-use rarkhopper\modals\long\LongFormElements;
-use rarkhopper\modals\long\LongFormResponse;
-use rarkhopper\modals\long\ModalFormButton;
-use rarkhopper\modals\long\ModalFormElements;
+use rarkhopper\modals\menu\element\ButtonImage;
+use rarkhopper\modals\menu\element\ButtonList;
+use rarkhopper\modals\menu\element\MenuFormButton;
+use rarkhopper\modals\menu\MenuFormBase;
+use rarkhopper\modals\menu\MenuFormElements;
+use rarkhopper\modals\menu\MenuFormResponse;
+use rarkhopper\modals\modal\element\ModalFormButton;
+use rarkhopper\modals\modal\element\ModalFormElements;
 use rarkhopper\modals\modal\element\ModalFormResponse;
 use rarkhopper\modals\modal\ModalFormBase;
 
 function example(Player $player) : void{
-	$form = new ExampleLongForm();
+	$form = new ExampleMenuForm();
 	$form->send($player);
 }
 
-class ExampleLongForm extends LongFormBase{
+class ExampleMenuForm extends MenuFormBase{
 
 	public function __construct(){
 		parent::__construct($this->createElement());
 	}
 
-	private function createElement() : LongFormElements{
-		$buttons = new ButtonList();
-		$buttons->append(new LongFormButton('hoge', new ButtonImage(ButtonImage::TYPE_URL, 'https://img/hoge')));
-		$buttons->append(new LongFormButton('aho'));
-		$buttons->append(new LongFormButton('rrrrrrr'));
-		$buttons->append(new LongFormButton('uoooo'));
-		return new LongFormElements('TestForm', 'ボタンを選んでね！', $buttons);
+	private function createElement() : MenuFormElements{
+		$buttons = (new ButtonList())
+			->append(new MenuFormButton('hoge', new ButtonImage(ButtonImage::TYPE_URL, 'https://img/hoge')))
+			->append(new MenuFormButton('aho'))
+			->append(new MenuFormButton('rrrrrrr'))
+			->append(new MenuFormButton('uoooo'));
+		return new MenuFormElements('TestForm', 'ボタンを選んでね！', $buttons);
 	}
 
-	protected function onSubmit(Player $player, LongFormResponse $response) : void{
-		$button = $response->getPressedElement(); //LongFormButton{txt: aho, img: null}
+	protected function onSubmit(Player $player, MenuFormResponse $response) : void{
+		$button = $response->getPressedElement(); //MenuFormButton{txt: aho, img: null}
 		$buttonName = $response->getPressedElement()->getText(); //aho
 		$buttonPosition = $response->getRawResponse(); //1
 	}

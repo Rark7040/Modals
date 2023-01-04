@@ -11,9 +11,9 @@ use rarkhopper\modals\utils\FormType;
 
 /**
  * モーダルフォームのスタイルを定義したクラス
- * Jsonに適用される値は{@see LongFormElements::__construct}の時点で固定され不変です
+ * Jsonに適用される値は{@see MenuFormElements::__construct}の時点で固定され不変です
  */
-class LongFormElements extends FormElements{
+class MenuFormElements extends FormElements{
 	private ButtonList $buttons;
 	private string $label;
 

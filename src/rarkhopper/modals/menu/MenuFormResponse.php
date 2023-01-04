@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\menu;
 
-use rarkhopper\modals\menu\element\LongFormButton;
+use rarkhopper\modals\menu\element\MenuFormButton;
 
-class LongFormResponse{
-	private LongFormButton $element;
+class MenuFormResponse{
+	private MenuFormButton $element;
 	private int $raw;
 
-	public function __construct(LongFormButton $element, int $raw){
+	public function __construct(MenuFormButton $element, int $raw){
 		$this->element = $element;
 		$this->raw = $raw;
 	}
 
 	/**
-	 * @return LongFormButton クライアント側で押されたボタンのインスタンス
+	 * @return MenuFormButton クライアント側で押されたボタンのインスタンス
 	 */
-	public function getPressedElement() : LongFormButton{
+	public function getPressedElement() : MenuFormButton{
 		return $this->element;
 	}
 
