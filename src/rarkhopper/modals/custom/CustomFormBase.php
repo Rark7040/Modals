@@ -10,6 +10,7 @@ use rarkhopper\modals\custom\element\CustomFormElements;
 use rarkhopper\modals\custom\element\DropDown;
 use rarkhopper\modals\custom\element\ICustomFormOption;
 use rarkhopper\modals\custom\element\Input;
+use rarkhopper\modals\custom\element\Label;
 use rarkhopper\modals\custom\element\Slider;
 use rarkhopper\modals\custom\element\StepSlider;
 use rarkhopper\modals\custom\element\Toggle;
@@ -65,6 +66,7 @@ abstract class CustomFormBase extends FormBase{
 		return match(true){
 			$option instanceof DropDown => is_int($rawResponse) && isset($option->getOptions()[$rawResponse]),
 			$option instanceof Input => is_string($rawResponse),
+			$option instanceof Label => $rawResponse === null,
 			$option instanceof Slider => is_int($rawResponse) && ($option->getMin() <= $rawResponse && $rawResponse <= $option->getMax()),
 			$option instanceof StepSlider => is_int($rawResponse) && isset($option->getSteps()[$rawResponse]),
 			$option instanceof Toggle => is_bool($rawResponse),
