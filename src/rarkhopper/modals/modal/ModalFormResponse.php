@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace rarkhopper\modals\modal\element;
+namespace rarkhopper\modals\modal;
 
 use rarkhopper\modals\modal\element\ModalFormButton;
 

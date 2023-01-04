@@ -7,6 +7,7 @@ namespace rarkhopper\modals\menu;
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use rarkhopper\modals\FormBase;
+use rarkhopper\modals\menu\element\MenuFormElements;
 use function is_int;
 
 abstract class MenuFormBase extends FormBase{

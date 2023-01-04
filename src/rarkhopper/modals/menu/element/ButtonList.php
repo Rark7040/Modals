@@ -24,10 +24,6 @@ class ButtonList extends NamedElement implements IPrimaryElement{
 
 	/**
 	 * フォームにボタンを追加します
-	 *
-	 * @param MenuFormButton $button
-	 *
-	 * @return ButtonList
 	 */
 	public function append(MenuFormButton $button) : ButtonList{
 		$this->buttons[] = $button;
