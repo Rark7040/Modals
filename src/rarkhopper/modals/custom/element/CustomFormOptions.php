@@ -24,10 +24,6 @@ class CustomFormOptions extends NamedElement implements IPrimaryElement{
 
 	/**
 	 * カスタムフォームにインプットやスライダーなどのオプションを追加します
-	 *
-	 * @param ICustomFormOption $option
-	 *
-	 * @return CustomFormOptions
 	 */
 	public function append(ICustomFormOption $option) : CustomFormOptions{
 		$this->options[] = $option;

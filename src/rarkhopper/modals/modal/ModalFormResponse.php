@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals\modal\element;
 
-use rarkhopper\modals\modal\element\ModalFormButton;
-
 class ModalFormResponse{
 	private ModalFormButton $element;
 	private bool $raw;

@@ -30,6 +30,8 @@ class ModalFormElements extends FormElements{
 	private function initElement() : void{
 		$this->appendElement(new FormLabel($this->label));
 		$this->appendElement(new FormType(FormType::TYPE_MODAL));
+		$this->appendElement($this->trueButton);
+		$this->appendElement($this->falseButton);
 	}
 
 	public function getLabel() : string{
