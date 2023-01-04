@@ -47,7 +47,7 @@ class DropDown extends NamedElement implements ICustomFormOption{
 	}
 
 	private function putElement() : void{
-		$this->element['type'] = 'step_slider';
+		$this->element['type'] = 'dropdown';
 		$this->element['text'] = $this->txt;
 		$this->element['default'] = $this->default;
 		$this->element['options'] = $this->options;
