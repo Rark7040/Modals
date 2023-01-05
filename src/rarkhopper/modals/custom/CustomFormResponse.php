@@ -34,7 +34,7 @@ class CustomFormResponse{
 	}
 
 	/**
-	 * @param array<string, string|int|float|bool|null> $response
+	 * @param array<string, scalar|null> $response
 	 */
 	private function allocateResponse(array $response) : void{
 		foreach($response as $name => $res){
