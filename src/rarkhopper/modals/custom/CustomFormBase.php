@@ -18,6 +18,7 @@ use rarkhopper\modals\FormBase;
 use function gettype;
 use function is_array;
 use function is_bool;
+use function is_float;
 use function is_int;
 use function is_string;
 
@@ -58,7 +59,7 @@ abstract class CustomFormBase extends FormBase{
 			$option = $options[$idx] ?? null;
 
 			if($option === null) throw new FormValidationException('invalid index ' . $idx);;
-			if(!$this->validateResponse($option, $raw)) throw new FormValidationException('invalid response ' . $raw);
+			if(!$this->validateResponse($option, $raw)) throw new FormValidationException('invalid response ' . gettype($raw) . $raw);
 			$responses[$option->getName()] = $raw;
 		}
 		return new CustomFormResponse($responses, $rawResponse);
