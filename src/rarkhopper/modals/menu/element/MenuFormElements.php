@@ -24,9 +24,9 @@ class MenuFormElements extends FormElements{
 	}
 
 	private function initElement() : void{
-		$this->appendElement(new FormLabel($this->label));
-		$this->appendElement(new FormType(FormType::TYPE_LONG));
-		$this->appendElement($this->buttons);
+		$this->appendElement(new FormLabel($this->label))
+			->appendElement(new FormType(FormType::TYPE_LONG))
+			->appendElement($this->buttons);
 	}
 
 	public function getLabel() : string{
