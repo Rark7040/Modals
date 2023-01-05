@@ -12,11 +12,13 @@ use function is_string;
 class CustomFormResponse{
 	/** @var array<string, string|int|float|bool|null> */
 	private array $response;
-	/** @var array<int> */
+	/** @var array<string, int> */
 	private array $intResponses = [];
-	/** @var array<string> */
+	/** @var array<string, float> */
+	private array $floatResponses = [];
+	/** @var array<string, string> */
 	private array $stringResponses = [];
-	/** @var array<bool> */
+	/** @var array<string, bool> */
 	private array $boolResponses = [];
 	/** @var array<int, string|int|float|bool|null>  */
 	private array $raw;
@@ -41,6 +43,7 @@ class CustomFormResponse{
 
 			}elseif(is_float($res)){
 				$this->intResponses[$name] = (int) $res;
+				$this->floatResponses[$name] = $res;
 
 			}elseif(is_string($res)){
 				$this->stringResponses[$name] = $res;
@@ -70,6 +73,13 @@ class CustomFormResponse{
 	 */
 	public function getIntResponses() : array{
 		return $this->intResponses;
+	}
+
+	/**
+	 * @return float[]
+	 */
+	public function getFloatResponses() : array{
+		return $this->floatResponses;
 	}
 
 	/**
