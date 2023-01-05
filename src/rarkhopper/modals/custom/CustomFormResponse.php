@@ -36,7 +36,10 @@ class CustomFormResponse{
 	 */
 	private function allocateResponse(array $response) : void{
 		foreach($response as $name => $res){
-			if(is_int($res) || is_float($res)){
+			if(is_int($res)){
+				$this->intResponses[$name] = $res;
+
+			}elseif(is_float($res)){
 				$this->intResponses[$name] = (int) $res;
 
 			}elseif(is_string($res)){
