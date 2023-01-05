@@ -48,7 +48,7 @@ abstract class CustomFormBase extends FormBase{
 	}
 
 	/**
-	 * @param array<int, int|float|string|bool|null> $rawResponse
+	 * @param array<int, scalar|null> $rawResponse
 	 * @throws FormValidationException
 	 */
 	private function createResponse(array $rawResponse) : CustomFormResponse{

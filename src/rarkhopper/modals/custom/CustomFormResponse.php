@@ -10,7 +10,7 @@ use function is_int;
 use function is_string;
 
 class CustomFormResponse{
-	/** @var array<string, string|int|float|bool|null> */
+	/** @var array<string, scalar|null> */
 	private array $response;
 	/** @var array<string, int> */
 	private array $intResponses = [];
@@ -20,12 +20,12 @@ class CustomFormResponse{
 	private array $stringResponses = [];
 	/** @var array<string, bool> */
 	private array $boolResponses = [];
-	/** @var array<int, string|int|float|bool|null>  */
+	/** @var array<int, scalar|null>  */
 	private array $raw;
 
 	/**
-	 * @param array<string, string|int|float|bool|null> $response
-	 * @param array<int, string|int|float|bool|null>    $raw
+	 * @param array<string, scalar|null> $response
+	 * @param array<int, scalar|null>    $raw
 	 */
 	public function __construct(array $response, array $raw){
 		$this->response = $response;
