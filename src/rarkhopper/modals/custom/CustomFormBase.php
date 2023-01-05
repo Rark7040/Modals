@@ -46,7 +46,7 @@ abstract class CustomFormBase extends FormBase{
 	}
 
 	/**
-	 * @param array<int, int|string|bool> $rawResponse
+	 * @param array<int, int|string|bool|null> $rawResponse
 	 */
 	private function createResponse(array $rawResponse) : ?CustomFormResponse{
 		$responses = [];

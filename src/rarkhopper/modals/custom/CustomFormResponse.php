@@ -9,7 +9,7 @@ use function is_int;
 use function is_string;
 
 class CustomFormResponse{
-	/** @var array<string, string|int|bool> */
+	/** @var array<string, string|int|bool|null> */
 	private array $response;
 	/** @var array<int> */
 	private array $intResponses = [];
@@ -17,12 +17,12 @@ class CustomFormResponse{
 	private array $stringResponses = [];
 	/** @var array<bool> */
 	private array $boolResponses = [];
-	/** @var array<int, string|int|bool>  */
+	/** @var array<int, string|int|bool|null>  */
 	private array $raw;
 
 	/**
-	 * @param array<string, string|int|bool> $response
-	 * @param array<string|int|bool>         $raw
+	 * @param array<string, string|int|bool|null> $response
+	 * @param array<int, string|int|bool|null>    $raw
 	 */
 	public function __construct(array $response, array $raw){
 		$this->response = $response;
@@ -31,7 +31,7 @@ class CustomFormResponse{
 	}
 
 	/**
-	 * @param array<string, string|int|bool> $response
+	 * @param array<string, string|int|bool|null> $response
 	 */
 	private function allocateResponse(array $response) : void{
 		foreach($response as $name => $res){
@@ -43,7 +43,6 @@ class CustomFormResponse{
 
 			}elseif(is_bool($res)){
 				$this->boolResponses[] = $res;
-
 			}
 		}
 	}
