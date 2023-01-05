@@ -18,7 +18,7 @@ use function is_int;
  */
 abstract class FormBase implements Form{
 	/**
-	 * @param int|bool|array<int, int|string|bool> $rawResponse
+	 * @param int|bool|array<int, int|float|string|bool> $rawResponse
 	 * @throws FormValidationException
 	 */
 	abstract protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void;

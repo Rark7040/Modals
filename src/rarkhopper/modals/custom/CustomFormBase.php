@@ -47,7 +47,7 @@ abstract class CustomFormBase extends FormBase{
 	}
 
 	/**
-	 * @param array<int, int|string|bool|null> $rawResponse
+	 * @param array<int, int|float|string|bool|null> $rawResponse
 	 * @throws FormValidationException
 	 */
 	private function createResponse(array $rawResponse) : CustomFormResponse{
@@ -58,6 +58,12 @@ abstract class CustomFormBase extends FormBase{
 			$option = $options[$idx] ?? null;
 
 			if($option === null) throw new FormValidationException('invalid index ' . $idx);;
+
+			if($option instanceof Slider){
+				var_dump($raw, $option->getMin(), $option->getMax());
+				var_dump($option->getMin() <= $raw && $raw <= $option->getMax());
+			}
+
 			if(!$this->validateResponse($option, $raw)) throw new FormValidationException('invalid response ' . $raw);
 			$responses[$option->getName()] = $raw;
 		}
@@ -69,7 +75,7 @@ abstract class CustomFormBase extends FormBase{
 			$option instanceof DropDown => is_int($rawResponse) && isset($option->getOptions()[$rawResponse]),
 			$option instanceof Input => is_string($rawResponse),
 			$option instanceof Label => $rawResponse === null,
-			$option instanceof Slider => is_int($rawResponse) && ($option->getMin() <= $rawResponse && $rawResponse <= $option->getMax()),
+			$option instanceof Slider => (is_int($rawResponse) || is_float($rawResponse)) && ($option->getMin() <= $rawResponse && $rawResponse <= $option->getMax()),
 			$option instanceof StepSlider => is_int($rawResponse) && isset($option->getSteps()[$rawResponse]),
 			$option instanceof Toggle => is_bool($rawResponse),
 			default => false

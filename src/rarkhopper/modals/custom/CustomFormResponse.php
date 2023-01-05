@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace rarkhopper\modals\custom;
 
 use function is_bool;
+use function is_float;
 use function is_int;
 use function is_string;
 
 class CustomFormResponse{
-	/** @var array<string, string|int|bool|null> */
+	/** @var array<string, string|int|float|bool|null> */
 	private array $response;
 	/** @var array<int> */
 	private array $intResponses = [];
@@ -17,12 +18,12 @@ class CustomFormResponse{
 	private array $stringResponses = [];
 	/** @var array<bool> */
 	private array $boolResponses = [];
-	/** @var array<int, string|int|bool|null>  */
+	/** @var array<int, string|int|float|bool|null>  */
 	private array $raw;
 
 	/**
-	 * @param array<string, string|int|bool|null> $response
-	 * @param array<int, string|int|bool|null>    $raw
+	 * @param array<string, string|int|float|bool|null> $response
+	 * @param array<int, string|int|float|bool|null>    $raw
 	 */
 	public function __construct(array $response, array $raw){
 		$this->response = $response;
@@ -31,18 +32,18 @@ class CustomFormResponse{
 	}
 
 	/**
-	 * @param array<string, string|int|bool|null> $response
+	 * @param array<string, string|int|float|bool|null> $response
 	 */
 	private function allocateResponse(array $response) : void{
 		foreach($response as $name => $res){
-			if(is_int($res)){
-				$this->intResponses[] = $res;
+			if(is_int($res) || is_float($res)){
+				$this->intResponses[$name] = (int) $res;
 
 			}elseif(is_string($res)){
-				$this->stringResponses[] = $res;
+				$this->stringResponses[$name] = $res;
 
 			}elseif(is_bool($res)){
-				$this->boolResponses[] = $res;
+				$this->boolResponses[$name] = $res;
 			}
 		}
 	}
