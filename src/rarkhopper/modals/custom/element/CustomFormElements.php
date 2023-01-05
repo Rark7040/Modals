@@ -21,8 +21,8 @@ class CustomFormElements extends FormElements{
 	}
 
 	private function initElement() : void{
-		$this->appendElement(new FormType(FormType::TYPE_CUSTOM));
-		$this->appendElement($this->options);
+		$this->appendElement(new FormType(FormType::TYPE_CUSTOM))
+			->appendElement($this->options);
 	}
 
 	public function getOptions() : CustomFormOptions{

@@ -8,6 +8,7 @@ use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use rarkhopper\modals\FormBase;
 use rarkhopper\modals\modal\element\ModalFormElements;
+use function gettype;
 use function is_bool;
 
 abstract class ModalFormBase extends FormBase{
@@ -27,10 +28,12 @@ abstract class ModalFormBase extends FormBase{
 		return $this->elements;
 	}
 
+	/**
+	 * @throws FormValidationException
+	 */
 	protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void{
-		if(!is_bool($rawResponse)) return;
-		$response = $this->createResponse($rawResponse);
-		$this->onSubmit($player, $response);
+		if(!is_bool($rawResponse))  throw new FormValidationException('invalid response. expected bool but given ' . gettype($rawResponse));
+		$this->onSubmit($player, $this->createResponse($rawResponse));
 	}
 
 	private function createResponse(bool $rawResponse) : ModalFormResponse{

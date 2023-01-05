@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace rarkhopper\modals;
 
-use Exception;
 use pocketmine\form\Form;
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
@@ -19,7 +18,7 @@ use function is_int;
  */
 abstract class FormBase implements Form{
 	/**
-	 * @param int|bool|array<int, int|string|bool> $rawResponse
+	 * @param int|bool|array<int, scalar|null> $rawResponse
 	 * @throws FormValidationException
 	 */
 	abstract protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void;

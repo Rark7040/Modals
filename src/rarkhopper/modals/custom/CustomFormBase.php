@@ -15,8 +15,10 @@ use rarkhopper\modals\custom\element\Slider;
 use rarkhopper\modals\custom\element\StepSlider;
 use rarkhopper\modals\custom\element\Toggle;
 use rarkhopper\modals\FormBase;
+use function gettype;
 use function is_array;
 use function is_bool;
+use function is_float;
 use function is_int;
 use function is_string;
 
@@ -37,26 +39,27 @@ abstract class CustomFormBase extends FormBase{
 		return $this->elements;
 	}
 
+	/**
+	 * @throws FormValidationException
+	 */
 	protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void{
-		if(!is_array($rawResponse)) return;
-		$response = $this->createResponse($rawResponse);
-
-		if($response === null) return;
-		$this->onSubmit($player, $response);
+		if(!is_array($rawResponse)) throw new FormValidationException('invalid response. expected but array, given ' . gettype($rawResponse));
+		$this->onSubmit($player, $this->createResponse($rawResponse));
 	}
 
 	/**
-	 * @param array<int, int|string|bool> $rawResponse
+	 * @param array<int, scalar|null> $rawResponse
+	 * @throws FormValidationException
 	 */
-	private function createResponse(array $rawResponse) : ?CustomFormResponse{
+	private function createResponse(array $rawResponse) : CustomFormResponse{
 		$responses = [];
 		$options = $this->getElements()->getOptions()->getAll();
 
 		foreach($rawResponse as $idx => $raw){
 			$option = $options[$idx] ?? null;
 
-			if($option === null) return null;
-			if(!$this->validateResponse($option, $raw)) return null;
+			if($option === null) throw new FormValidationException('invalid index ' . $idx);;
+			if(!$this->validateResponse($option, $raw)) throw new FormValidationException('invalid response ' . gettype($raw) . $raw);
 			$responses[$option->getName()] = $raw;
 		}
 		return new CustomFormResponse($responses, $rawResponse);
@@ -67,7 +70,7 @@ abstract class CustomFormBase extends FormBase{
 			$option instanceof DropDown => is_int($rawResponse) && isset($option->getOptions()[$rawResponse]),
 			$option instanceof Input => is_string($rawResponse),
 			$option instanceof Label => $rawResponse === null,
-			$option instanceof Slider => is_int($rawResponse) && ($option->getMin() <= $rawResponse && $rawResponse <= $option->getMax()),
+			$option instanceof Slider => ($rawResponse === 0 || is_float($rawResponse)) && ($option->getMin() <= $rawResponse && $rawResponse <= $option->getMax()),
 			$option instanceof StepSlider => is_int($rawResponse) && isset($option->getSteps()[$rawResponse]),
 			$option instanceof Toggle => is_bool($rawResponse),
 			default => false

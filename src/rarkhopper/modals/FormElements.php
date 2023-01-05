@@ -27,8 +27,9 @@ abstract class FormElements implements JsonSerializable{
 		return $this->title;
 	}
 
-	public function appendElement(IPrimaryElement $element) : void{
+	public function appendElement(IPrimaryElement $element) : FormElements{
 		$this->elements[] = $element;
+		return $this;
 	}
 
 	/**
