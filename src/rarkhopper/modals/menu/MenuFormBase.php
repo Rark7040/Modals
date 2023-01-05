@@ -8,6 +8,7 @@ use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use rarkhopper\modals\FormBase;
 use rarkhopper\modals\menu\element\MenuFormElements;
+use function gettype;
 use function is_int;
 
 abstract class MenuFormBase extends FormBase{
@@ -27,18 +28,21 @@ abstract class MenuFormBase extends FormBase{
 		return $this->elements;
 	}
 
+	/**
+	 * @throws FormValidationException
+	 */
 	protected function internalHandleResponse(Player $player, int|bool|array $rawResponse) : void{
-		if(!is_int($rawResponse)) return;
-		$response = $this->createResponse($rawResponse);
-
-		if($response === null) return;
-		$this->onSubmit($player, $response);
+		if(!is_int($rawResponse)) throw new FormValidationException('invalid response. expected int but given ' . gettype($rawResponse));
+		$this->onSubmit($player, $this->createResponse($rawResponse));
 	}
 
-	private function createResponse(int $rawResponse) : ?MenuFormResponse{
+	/**
+	 * @throws FormValidationException
+	 */
+	private function createResponse(int $rawResponse) : MenuFormResponse{
 		$pressedElement = $this->getElements()->getButtons()->getAllButtons()[$rawResponse] ?? null;
 
-		if($pressedElement === null) return null;
+		if($pressedElement === null) throw new FormValidationException('invalid response ' . $rawResponse);
 		return new MenuFormResponse($pressedElement, $rawResponse);
 	}
 }
