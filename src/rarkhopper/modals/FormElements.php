@@ -10,7 +10,7 @@ use rarkhopper\modals\utils\FormTitle;
 /**
  * @internal
  */
-abstract class FormElements implements JsonSerializable{
+abstract class FormElements{
 	protected string $title;
 	/** @var array<IPrimaryElement> */
 	protected array $elements = [];
@@ -42,7 +42,7 @@ abstract class FormElements implements JsonSerializable{
 	/**
 	 * @return array<string, mixed> Minecraftのフォームスタイルが定義されているJsonに変換可能な配列
 	 */
-	public function jsonSerialize() : array {
+	public function toArray() : array{
 		$jsonArr = [];
 
 		foreach($this->elements as $element){
