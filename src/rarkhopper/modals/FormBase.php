@@ -61,7 +61,7 @@ abstract class FormBase implements Form{
 		$this->internalHandleResponse($player, $data);
 	}
 
-	public function jsonSerialize(){
-		return $this->getElements()->jsonSerialize();
+	public function jsonSerialize() : mixed{
+		return $this->getElements()->toArray();
 	}
 }
